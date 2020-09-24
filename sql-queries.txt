@@ -1,0 +1,68 @@
+create database SQLTraining
+use SQLTraining
+
+create table Department(ID int identity(1,1) primary key,department_name varchar(20) unique, manager varchar(20) not null,InsertDate date default getdate(),modifiedDate date default getdate())
+create table Employee(ID int identity(10,5) primary key,first_name varchar(20) not null, last_name varchar(20) not null,DepartmentID int foreign key references Department(ID),designation varchar(20),gender varchar(2) check (gender='m' or gender='f'), ContactNo varchar(10) unique,ActiveFlag int default 1,InsertDate date default getdate(),modifiedDate date default getdate())
+
+insert into Department values ('HR','Anupam','20200411','20200930')
+insert into Department values ('Finance','Adwaitha',default,'20200930')
+insert into Department values ('Accounts','Ajay','20200411',default)
+insert into Department values ('Marketing','Ananthu','20190331','20190831')
+insert into Department values ('Management','Abin',default,default)
+insert into Department values ('Salesforce','Shyam','20101104','20121215')
+insert into Department values ('QA','Gopakumar',default,'20200930')
+insert into Department values ('DevOps','Gopika','19950531','20200531')
+insert into Department values ('Development','Ranjini','20160801','20200919')
+insert into Department values ('Administration','Lakshmi',default,default)
+
+insert into Employee values ('Manjari','Jayendran',4,'Trainee','f','88998877',default,'20141103','20170128')
+insert into Employee values ('Sarah','Bobby',4,'Dealer','f','99009900',default,'20150103',default)
+insert into Employee values ('Athira','Nair',2,'Assistant','f','12343214',0,default,default)
+insert into Employee values ('Gokul','Ram',1,'Assosciate','m','21232124',0,'20161214','20181128')
+insert into Employee values ('Aswin','Shaji',9,'Architect','m','09898767',0,'20140106','20161118')
+insert into Employee values ('Yaswant','Pillai',3,'Accountant','m','13243546',0,'20191231',default)
+insert into Employee values ('Prakash','Menon',1,'Assistant','m','64534231',default,'20091105',default)
+insert into Employee values ('Shebin','Muhammed',5,'Trainee','m','19283746',default,'20041217',default)
+insert into Employee values ('Abel','Mathews',7,'Dealer','m','91827364',0,'20141103',default)
+insert into Employee values ('Ramesh','Narayan',6,'Supervisor','m','11992387',default,default,default)
+
+select * from Employee
+select * from Department where department_name='HR'
+select * from Employee where ID>30
+select * from Employee where DepartmentID=3
+
+alter table Employee alter column last_name varchar(20) null
+
+delete from Employee where ActiveFlag=0
+
+update Department set department_name='Sales' where department_name='Marketing'
+
+delete from Department where department_name='Finance'
+
+set identity_insert Department on
+insert into Department (ID,department_name,manager,InsertDate,modifiedDate) values (100,'Infrastructure','Sethu',default,default)
+
+select * into EmployeeReplica from Employee
+
+alter table Employee add constraint unique_name unique(first_name,last_name)
+
+select * into DepartmentReplica from Department
+
+alter table EmployeeReplica add constraint FK_Delete foreign key (Department_ID) references DepartmentReplica (ID) on delete cascade
+
+create view SALES as select * from Employee where DepartmentID=4
+
+
+
+create function Sumof3 (@a int,@b int,@c int)
+returns int 
+as
+begin
+declare @sum int;
+select @sum=@a+@b+@c;
+return @sum;
+end;
+
+select dbo.sumof3(1,2,3)
+
+http://stackoverflow.com/questions/586642/tsql-how-do-you-output-print-in-a-user-defined-function
