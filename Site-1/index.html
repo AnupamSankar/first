@@ -13,6 +13,36 @@
         </style>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
         <link href="stylesheets/Demo.css" rel=stylesheet type="text/css" >
+        <script src="bs/jquery-3.5.1.slim.min.js"></script>
+        <script>
+            //$("document").ready(function() {
+                //$("#but1").click(function() {
+                    //$("h1").hide();
+                    //$("img").hide();
+                    //$("table").hide();
+                    //$(this).hide();
+                    //$(this).css('background-color','red');
+                    //});
+
+            //});
+            
+            $("document").ready(function() {
+                $("#but2").hover(function() {
+                    $(this).css({'background-color':'red','color':'black'});
+                    },
+                    function() {
+                    $(this).css({'background-color':'blue','color':'white'});
+                    });
+                $("#but2").dblclick(function(){
+                    $(this).css({'background-color':'green','color':'yellow'})
+                    
+                });
+                
+
+            });
+        
+        
+        </script>
         <!--<style>
             body {
                 
@@ -32,6 +62,7 @@
         <a href="https://www.smule.com/AnupamShankar">Anupam</a><br><br><br>
         <h4>Adding an image</h4>
         <img src="images/1.jpg" alt="Keys" width="128" height="128"><br><br><br>
+        <button id="but2">Color change using jquery</button>
         
         <h4 id="tab">Adding a table</h4>
         <table style="width:100%">
@@ -71,6 +102,7 @@
             
         </form>
         <button>Change name</button>
+        <button id="but1">Click me!</button>
         <script src="scripts/Anupam.js"></script>
     
     

@@ -13,7 +13,7 @@ chgimg.onclick = function () {
 };
     
 //personalised welcome message
-var chgname = document.querySelector('button');
+var chgname = document.querySelector('#but1');
 var hdng = document.querySelector('h1');
 
 function setUserName() {

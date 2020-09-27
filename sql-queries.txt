@@ -65,4 +65,34 @@ end;
 
 select dbo.sumof3(1,2,3)
 
+create function gapfrom2day (@a date)
+returns int 
+as
+begin
+declare @diff int;
+set @diff=datediff(day,getdate(),@a);
+return @diff;
+end;
+
+
+
+
+create function gapfrom2daytry (@a date)
+returns int 
+as
+begin
+declare @diff int;
+set @diff=datediff(day,getdate(),@a);
+begin try
+if(@diff<0)
+begin
+print 'Its an old date';
+end
+end try
+begin catch
+return @diff-@diff;
+end catch
+return @diff;
+end;
+
 http://stackoverflow.com/questions/586642/tsql-how-do-you-output-print-in-a-user-defined-function

@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Animation Trial using jQuery</title>
+        <meta charset="utf-8">
+        <!--<script src="bs/jquery-3.5.1.slim.min.js"></script>-->
+        <style>
+            .center{
+                
+                margin:0;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                -ms-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+                background-color: aqua;
+                color: black;
+                /*height: 200px;*/
+            }
+            
+            .box{
+                
+                background-color: firebrick;
+                position: absolute;
+                height: 350px;
+                width: 500px;
+                text-align: center;
+                font-size: 60px;
+                margin: 0;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+                
+            }
+        
+        </style>
+        <!--<script src="bs/jquery-3.5.1.slim.min.js"></script>-->
+        <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+        <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+        <script>
+                $("document").ready(function(){
+                $("button").click(function(){
+                    $(this).css({'background-color':'blue','color':'white'});
+                    $("div").animate({left: '200px'}, "slow");
+                    $("div").animate({ fontSize: '5em'}, "slow");
+                                  });
+                             }); 
+        </script>
+        
+
+    </head>
+        
+    
+
+    <body>
+        <button class="center">Click to see the box move!</button>
+        <div class="box">How is it?</div>
+        
+    
+    </body>
+
+
+
+</html>
