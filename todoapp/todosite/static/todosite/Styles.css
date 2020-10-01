@@ -1,3 +1,65 @@
-body{
-    background-color: aqua
+body
+{
+    background-color: peachpuff;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.container
+{   width: 80%;
+    height: 500px;
+    background-color: dodgerblue;
+    align-self: center;
+    margin-top: 5%;
+    
+}
+
+h1{
+    text-align: center;
+    
+}
+
+
+
+a:hover{
+    color: red;
+}
+
+#add-btn
+{
+    align-content: center;
+}
+
+.btn btn-danger
+{
+    align-content: center;
+}
+
+.input-grp
+{
+    text-align: center;
+}
+
+.del
+{
+    text-align: center;
+}
+
+.nc
+{
+    background-color: white;
+    color: blue;
+    border-style: solid;
+    border-width: thin;
+    height: 25px;
+    border-color: black;
+}
+.c{
+    background-color: peachpuff;
+    border-style: solid;
+    border-width: thin;
+    border-color: black;
+    height: 25px;
 }

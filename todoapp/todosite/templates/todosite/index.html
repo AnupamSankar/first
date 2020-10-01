@@ -7,27 +7,42 @@
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todoapp</title>
+        <link rel="stylesheet" href="{% static 'todosite/bs/bootstrap.min.css' %}" >
         <link rel="stylesheet" href="{% static 'todosite/Styles.css' %}" >
     </head>
     
     <body>
-        <h1>To Do App</h1>
-        <input type="text" placeholder="What is left out for the day?">
-        <button class="add">Add</button><br>
-        <button class="delete">Delete completed</button>
-        <button class="delete">Delete all</button>
-        <ul>
+        <div class="container">
+        <h1>What's your plan for the day?</h1>
+        <form action="{% url 'add' %}" method="POST" role="form">
+            {% csrf_token %}
+            <div class="input-grp">
+                {{form.text}}
+                
+                    <!--<input type="text" class="form-control" placeholder="What is left out for the day?" aria-label="Todo" aria-describedby="add-btn">-->
+                    <button type="submit" class="btn btn-success" id="add-btn" >Add</button><br><br>
+                
+            </div>
+        </form>
+        <div class="del">
+        <a href="{% url 'deleteCompleted' %}">
+        <button style="align-content: center" class="btn btn-warning"><i class="glyphicon glyphicon-trash"></i>Delete completed</button></a>
+        <a href="{% url 'deleteAll' %}"><button class="btn btn-danger">Delete all</button></a>
+        <br><br>
+        <ul style="list-style-type: none">
             
             {% for todolist in todo_items %}
                 {% if todolist.completed %}
-                <li class="completed">{{todolist.text}}</li>
+            <div class="c"><li class="completed">{{todolist.text}}</li><br></div>
                 {% else %}
-            <a href="#"><li class="to-do">{{todolist.text}}</li></a>
+            <div class="nc"> <a href="{% url 'completed' todolist.id %}"><li class="to-do">{{todolist.text}}</li></a><br></div>
             {% endif %}
             {% endfor %}
                 
             
         </ul>
+        </div>
+        </div>
     </body>
     
 </html>
